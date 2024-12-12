@@ -16,10 +16,14 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+    - name: Install VS Components
+      uses: thepwrtank18/install-vs-components@v1.0.0
+      with:
+        components: Microsoft.VisualStudio.Workload.NativeDesktop
     - name: Build
       shell: cmd
       run: |
-        git clone -b blender-v4.3-release https://projects.blender.org/blender/blender.git
+        git clone https://projects.blender.org/blender/blender.git
         cd blender
         make update
         make release
